@@ -1,25 +1,5 @@
-.registration-form {
-  width: 300px;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.registration-form label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.registration-form input {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
-
-.error {
-  color: red;
-  font-size: 12px;
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
 }
