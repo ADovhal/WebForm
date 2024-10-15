@@ -1,36 +1,35 @@
 services:
-  backend:
-    build: ./backend/spring-server-v1
-    ports:
-      - "9090:9090"
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=admin
-    networks:
-      - webapp-network
+    backend:
+        build: ./backend/spring-server-v1
+        ports:
+            - '9090:9090'
+        networks:
+            - webapp-network
+        depends_on:
+            - db # Зависимость от сервиса db
+        environment:
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
+            - SPRING_DATASOURCE_USERNAME=postgres
+            - SPRING_DATASOURCE_PASSWORD=admin
 
-  frontend:
-    build: ./frontend/webform
-    ports:
-      - "3000:80"
-    networks:
-      - webapp-network
+    frontend:
+        build: ./frontend/webform
+        ports:
+            - '3000:80'
+        networks:
+            - webapp-network
 
-  db:
-    image: postgres:latest
-    environment:
-      POSTGRES_DB: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: admin
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    networks:
-      - webapp-network
+    db:
+        image: postgres:latest
+        ports:
+            - '5432:5432'
+        networks:
+            - webapp-network
+        environment:
+            - POSTGRES_DB=postgres
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=admin
 
 networks:
-  webapp-network:
-    driver: bridge
-
-volumes:
-  postgres_data:
+    webapp-network:
+        driver: bridge
