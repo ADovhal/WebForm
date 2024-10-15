@@ -1,8 +1,9 @@
 import React from 'react'
-import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import RegistrationForm from './components/RegistrationForm'
 import LoginForm from './components/LoginForm'
 import Dashboard from './components/Dashboard'
+import HealthCheck from './components/HealthCheck' // Импортируем HealthCheck
 
 // Создаем роутер с маршрутами
 const router = createBrowserRouter([
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
 	{
 		path: '/dashboard',
 		element: <Dashboard />, // Страница панели управления
+	},
+	{
+		path: '/health', // Новый маршрут для проверки доступности сервера
+		element: <HealthCheck />,
 	},
 ])
 
