@@ -13,8 +13,6 @@ services:
       - "3000:80"
     networks:
       - webapp-network
-  
-  
 
 networks:
   webapp-network:
