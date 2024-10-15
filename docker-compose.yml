@@ -1,0 +1,19 @@
+version: '3'
+services:
+  backend:
+    build: ./backend/spring-server-v1
+    ports:
+      - "9090:9090"
+    networks:
+      - webapp-network
+
+  frontend:
+    build: ./frontend/webform
+    ports:
+      - "3000:80"
+    networks:
+      - webapp-network
+
+networks:
+  webapp-network:
+    driver: bridge
